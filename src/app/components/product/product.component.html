@@ -3,5 +3,12 @@
     <h2>{{ product.name }}</h2>
     <p>{{ product.desc }}</p>
     <p>Stock: {{ product.stock}}</p>
+    @if(!hasStock()) {
+      <p>No tiene stock</p>
+    }
+    <div class="container-btns">
+      <button (click)="onClickStock(true)">Stock + 5</button>
+      <button (click)="onClickStock()">Stock - 5</button>
+    </div>
   </div>
 }
