@@ -1,5 +1,7 @@
-<div>
-  <h2>{{ product.name }}</h2>
-  <p>{{ product.desc }}</p>
-  <p>Stock: {{ product.stock}}</p>
-</div>
+@if(product) {
+  <div>
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.desc }}</p>
+    <p>Stock: {{ product.stock}}</p>
+  </div>
+}
