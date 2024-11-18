@@ -1,21 +1,19 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../models/product.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
 export class ProductComponent {
   @Input({ required: true }) product!: Product;
 
-  // 1. public
-  // 2. protected
-  // 3. private
-
   protected onClickStock(isAdd: boolean = false): void {
+    console.log(1);
     isAdd
       ? this.product.stock += 5
       : this.reduceStock();

@@ -1,14 +1,11 @@
 @if(product) {
-  <div>
-    <h2>{{ product.name }}</h2>
+  <div class="product__container" [ngClass]="hasStock() ? 'product__container--ok' : 'product__container--nok'">
+    <h2 class="product__title">{{ product.name }}</h2>
     <p>{{ product.desc }}</p>
     <p>Stock: {{ product.stock}}</p>
-    @if(!hasStock()) {
-      <p>No tiene stock</p>
-    }
-    <div class="container-btns">
-      <button (click)="onClickStock(true)">Stock + 5</button>
-      <button (click)="onClickStock()">Stock - 5</button>
+    <div class="product__container product__container--btns">
+      <button class="product__btn" (click)="onClickStock(true)">Stock + 5</button>
+      <button class="product__btn" [ngClass]="{'product__btn--no-stock': !hasStock()}" [disabled]="!hasStock()" (click)="onClickStock()">Stock - 5</button>
     </div>
   </div>
 }
