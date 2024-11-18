@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductComponent } from "./components/product/product.component";
 import { Product } from './models/product.interface';
+import { products } from './models/products';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +13,6 @@ import { Product } from './models/product.interface';
 export class AppComponent {
   title = 'bootcamp-m7';
 
-  product1: Product = {
-    name: 'Manzana',
-    desc: 'test desc.',
-    stock: 20
-  };
-
-  product2: Product = {
-    name: 'Pera',
-    desc: 'test desc. 2',
-    stock: 35
-  };
+  products: Product[] = products;
 
 }
