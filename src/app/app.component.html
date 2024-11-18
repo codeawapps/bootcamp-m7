@@ -2,7 +2,7 @@
 @if(products.length) {
   <div>
     @for(item of products; track item.name) {
-      <app-product [product]="item"></app-product>
+      <app-product [product]="item" (onEmitStock$)="onEmitStockAction($event)"></app-product>
     }
   </div>
 } @else {

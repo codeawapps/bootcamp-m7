@@ -4,8 +4,11 @@
     <p>{{ product.desc }}</p>
     <p>Stock: {{ product.stock}}</p>
     <div class="product__container product__container--btns">
-      <button class="product__btn" (click)="onClickStock(true)">Stock + 5</button>
-      <button class="product__btn" [ngClass]="{'product__btn--no-stock': !hasStock()}" [disabled]="!hasStock()" (click)="onClickStock()">Stock - 5</button>
+      <button class="product__btn" (click)="onClickStock()">Stock + 5</button>
+      <button class="product__btn"
+        [ngClass]="{'product__btn--no-stock': !hasStock()}" [disabled]="!hasStock()"
+        (click)="onClickStock(stockAction.REDUCE)">Stock - 5
+      </button>
     </div>
   </div>
 }

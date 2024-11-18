@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Product } from '../../models/product.interface';
+import { Component, Input, output } from '@angular/core';
+import { Product, Stock, Stock__Action } from '../../models/product.interface';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,22 +11,18 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductComponent {
   @Input({ required: true }) product!: Product;
+  onEmitStock$ = output<Stock>();
 
-  protected onClickStock(isAdd: boolean = false): void {
-    console.log(1);
-    isAdd
-      ? this.product.stock += 5
-      : this.reduceStock();
+  protected stockAction = Stock__Action;
+
+  protected onClickStock(action: Stock__Action = Stock__Action.ADD): void {
+    this.onEmitStock$.emit({
+      action,
+      productName: this.product.name
+    });
   }
 
   protected hasStock(): boolean {
     return this.product.stock > 0;
   }
-
-  private reduceStock(): void {
-    this.product.stock = this.product.stock <= 5
-      ? 0
-      : this.product.stock - 5;
-  }
-
 }
